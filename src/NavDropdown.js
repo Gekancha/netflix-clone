@@ -22,7 +22,7 @@ function NavDropdown() {
        Profile </button> */}
         <Profile /> 
         <p className="view" onClick ={() => history.push("/Profile")}> view </p>
-       {/* Profile </Profile> */}
+       
         </div>
   
 
