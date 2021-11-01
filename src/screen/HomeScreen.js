@@ -8,7 +8,7 @@ import Login from '../header/Navbar/loginV2'
 function HomeScreen() {
     return (
         <div className="home_screen">
-            <Login />
+            {/* <Login /> */}
 
             {/* <Nav/> */}
             <Banner />

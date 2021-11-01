@@ -3,16 +3,15 @@ import { useState } from 'react'
 
 const base_url = 'https://image.tmdb.org/t/p/original/'
 
-function MoviePoster({ key, movie, isLargeRow, displayLoading }) {
+function MoviePoster({ movie, isLargeRow, displayLoading }) {
     const smallMovieRatio = { width: '170px', height: '100px' }
     const largeMovieRatio = { width: '170px', height: '250px' }
     const posterRatio = isLargeRow ? largeMovieRatio : smallMovieRatio
 
     const [isLoading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
 
     return (
-        <div key={key} style={{ display: 'contents' }}>
+        // <div key={key} style={{ display: 'contents' }}>
             <>
                 {displayLoading && isLoading ? (
                     <div style={{ paddingRight: '10px' }}>
@@ -33,13 +32,12 @@ function MoviePoster({ key, movie, isLargeRow, displayLoading }) {
                         setLoading(false)
                     }}
                     onError={()=>{
-                        setError(true)
                         setLoading(false)
                     }}
-                    alt={movie.name}
+                    alt={movie.title}
                 />
             </>
-        </div>
+        // </div>
     )
 }
 export default MoviePoster

@@ -25,7 +25,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
             <div className="row_posters">
                 {movies.map((movie, index) => (
                     <MoviePoster
-                        key={movie.id}
+                        key={`${title}-${movie.id}`}
                         isLargeRow={isLargeRow}
                         movie={movie}
                         displayLoading={index <= 10}
