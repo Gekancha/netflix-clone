@@ -1,0 +1,5 @@
+div.content {
+    display: column;
+    margin-top: 2rem;
+    gap: calc(2rem - 20px);
+}
