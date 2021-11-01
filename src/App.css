@@ -1,4 +1,8 @@
-.app{
-    background-color: #111 ;
-    
+.app {
+    background-color: #111;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;;
+}
+
+:root {
+    --banner-height: 448px;
 }
