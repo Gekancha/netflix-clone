@@ -2,7 +2,7 @@ import React from "react";
 import Row from "../components/Row";
 import request from "../request";
 import Banner from "../header/Banner";
-import Login from "../header/loginV2";
+import Login from "../header/Navbar/loginV2";
 
 function HomeScreen() {
   return (

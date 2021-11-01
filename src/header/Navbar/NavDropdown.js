@@ -4,7 +4,7 @@ import React from "react";
 //     Switch,
 //     Route, Link
 //   } from 'react-router-dom';
-import Profile from "../screen/Profile";
+import Profile from "../../screen/Profile";
 import "./Nav.css";
 import { useHistory } from "react-router-dom";
 
