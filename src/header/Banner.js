@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios, * as others from 'axios'
 import request from '../request'
 import './Banner.css'
+import { useHistory } from 'react-router'
 
 function Banner() {
     const [movie, setMovie] = useState([]) //change banner every refresh
+    const history = useHistory()
 
     useEffect(() => {
         async function fetchData() {
@@ -44,7 +46,12 @@ function Banner() {
                     <button className="banner_button">
                         Play {movie[1]?.backdrop_path}
                     </button>
-                    <button className="banner_button">My List</button>
+                    <button
+                        className="banner_button"
+                        onClick={() => history.push('/mylist')}
+                    >
+                        My List
+                    </button>
                 </div>
                 {/* 
             <h1 className="banner_descrip">{truncate(movie?.overview, 150)}</h1> */}
