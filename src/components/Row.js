@@ -5,14 +5,15 @@ import Youtube from 'react-youtube'
 import MoviePoster from './MoviePoster'
 
 function Row({ title, fetchUrl, isLargeRow }) {
-    const [movies, setMovie] = useState([])
+    const [movies, setMovies] = useState([])
+    const maxNumberOfSkeletons = 10;
 
     useEffect(() => {
         async function fetchData() {
-            const requests = await axios.get(fetchUrl)
+            const response = await axios.get(fetchUrl)
             // console.log(requests.data.results);
-            setMovie(requests.data.results)
-            return requests
+            setMovies(response.data.results)
+            return response
         }
         fetchData()
     }, [fetchUrl]) // [] run once when row load and dont run it again
@@ -28,7 +29,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
                         key={`${title}-${movie.id}`}
                         isLargeRow={isLargeRow}
                         movie={movie}
-                        displayLoading={index <= 10}
+                        displayLoading={index <= maxNumberOfSkeletons}
                     />
                 ))}
             </div>
