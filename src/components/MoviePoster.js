@@ -1,5 +1,6 @@
 import { Skeleton } from 'antd'
 import { useState } from 'react'
+import { useMovieContext } from '../contexts/MovieProvider'
 
 const base_url = 'https://image.tmdb.org/t/p/original/'
 
@@ -10,6 +11,7 @@ function MoviePoster({ movie, isLargeRow, displayLoading }) {
 
     const [isLoading, setLoading] = useState(true)
     const [isError, setError] = useState(false)
+    const { setMovie } = useMovieContext()
 
     return (
         <>
@@ -28,6 +30,7 @@ function MoviePoster({ movie, isLargeRow, displayLoading }) {
                 src={`${base_url}${
                     isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
+                onClick={() => !isError && setMovie(movie)}
                 onLoad={() => {
                     setLoading(false)
                 }}
