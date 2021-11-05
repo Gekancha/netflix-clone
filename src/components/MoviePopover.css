@@ -41,6 +41,7 @@ div.popover_status_group {
 div.popover_status {
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 div.popover_interaction {
