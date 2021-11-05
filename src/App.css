@@ -1,4 +1,4 @@
-.app {
+body {
     background-color: #111;
     font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
@@ -7,6 +7,6 @@
     --banner-height: 448px;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, div {
     color: white;
 }
