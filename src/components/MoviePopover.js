@@ -9,9 +9,9 @@ import {
 import './MoviePopover.css'
 import { Badge, Button, Popover } from 'antd'
 import request from '../request'
-import axios from 'axios'
 import { useMovieContext } from '../contexts/MovieProvider'
 import { useMyListContext } from '../contexts/MyListProvider'
+import { getGenresFromMovie } from '../utils/MovieUtils'
 
 function MoviePopover() {
     const { movie, setMovie } = useMovieContext()
@@ -29,12 +29,8 @@ function MoviePopover() {
 
     useEffect(() => {
         async function fetchData() {
-            const allGenres = (await axios.get(fetchMovieGenres)).data.genres
-            setGenres(
-                allGenres
-                    .filter((genre) => movie.genre_ids.includes(genre.id))
-                    .map(({ name }) => name)
-            )
+            const movieGenres = await getGenresFromMovie(movie)
+            setGenres(movieGenres)
         }
         if (movie) fetchData()
         setIsShown(!!movie)

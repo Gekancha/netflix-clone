@@ -1,13 +1,11 @@
 import { Skeleton } from 'antd'
 import { useState } from 'react'
+import { IMAGE_BASE_URL, POSTER_RATIO } from '../constants/MoviePoster'
 import { useMovieContext } from '../contexts/MovieProvider'
 
-const base_url = 'https://image.tmdb.org/t/p/original/'
-
 function MoviePoster({ movie, isLargeRow, displayLoading }) {
-    const smallMovieRatio = { minWidth: '170px', minHeight: '100px' }
-    const largeMovieRatio = { minWidth: '170px', minHeight: '250px' }
-    const posterRatio = isLargeRow ? largeMovieRatio : smallMovieRatio
+    const { SMALL, LARGE } = POSTER_RATIO
+    const posterRatio = isLargeRow ? LARGE : SMALL
 
     const [isLoading, setLoading] = useState(true)
     const [isError, setError] = useState(false)
@@ -27,7 +25,7 @@ function MoviePoster({ movie, isLargeRow, displayLoading }) {
                     ...(isLoading && { display: 'none' }),
                     ...(isError && { cursor: 'auto', transform: 'none' }),
                 }}
-                src={`${base_url}${
+                src={`${IMAGE_BASE_URL}${
                     isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
                 onClick={() => !isError && setMovie(movie)}
