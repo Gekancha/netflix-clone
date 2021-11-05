@@ -1,10 +1,20 @@
 import React from 'react'
+import MyListItem from '../components/MyListItem'
 import { useMyListContext } from '../contexts/MyListProvider'
+import './MyList.css'
 
 function MyList() {
-    const { myMovieList, removeFromMyList } = useMyListContext()
+    const { myMovieList } = useMyListContext()
+
     return (
-        <div className="home_screen">{myMovieList.map((movie) => movie.name)}</div>
+        <div className="my_list_screen">
+            <h1>My List</h1>
+            <div className="my_list">
+                {myMovieList.map((movie) => (
+                    <MyListItem key={movie.id} movie={movie} />
+                ))}
+            </div>
+        </div>
     )
 }
 
