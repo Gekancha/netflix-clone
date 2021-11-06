@@ -6,7 +6,7 @@ import MoviePoster from './MoviePoster'
 
 function Row({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([])
-    const maxNumberOfSkeletons = 10;
+    const maxNumberOfSkeletons = 10
 
     useEffect(() => {
         async function fetchData() {
