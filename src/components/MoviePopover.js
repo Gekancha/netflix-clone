@@ -11,7 +11,8 @@ import { Badge, Button, Popover } from 'antd'
 import request from '../request'
 import { useMovieContext } from '../contexts/MovieProvider'
 import { useMyListContext } from '../contexts/MyListProvider'
-import { getGenresFromMovie } from '../utils/MovieUtils'
+import { getGenresFromMovie, getTrailerById } from '../utils/MovieUtils'
+import YouTube from 'react-youtube'
 
 function MoviePopover() {
     const { movie, setMovie } = useMovieContext()
@@ -19,6 +20,7 @@ function MoviePopover() {
     const [isShown, setIsShown] = useState(!!movie)
     const [genres, setGenres] = useState([])
     const [isAlreadyInMyList, setAlreadyInMyList] = useState(false)
+    const [trailer, setTrailer] = useState()
 
     const { fetchMovieGenres } = request
 
@@ -31,6 +33,8 @@ function MoviePopover() {
         async function fetchData() {
             const movieGenres = await getGenresFromMovie(movie)
             setGenres(movieGenres)
+            const videoId = await getTrailerById(movie.id)
+            setTrailer(videoId)
         }
         if (movie) fetchData()
         setIsShown(!!movie)
@@ -98,7 +102,10 @@ function MoviePopover() {
                             </p>
                         </div>
                         <div className="popover_right_content">
-                            {/* Will be video preview */}
+                            <YouTube
+                                videoId={trailer}
+                                className="popover_video_trailer"
+                            />
                         </div>
                         <Button
                             type="text"
@@ -106,7 +113,8 @@ function MoviePopover() {
                             style={{
                                 position: 'absolute',
                                 color: 'white',
-                                right: '3em',
+                                right: '2em',
+                                top: '0.75em'
                             }}
                             onClick={() => {
                                 setMovie()

@@ -10,14 +10,22 @@ div.popover {
 div.popover_content {
     display: flex;
     justify-content: space-between;
-    padding: 32px 64px;
+    padding: 48px 64px 32px 64px;
     height: 100%;
 }
 
 div.popover_left_content {
     display: flex;
-    width: 40%;
+    width: 55%;
     flex-direction: column;
+}
+
+div.popover_right_content {
+    margin-right: 32px;
+}
+
+div.popover_right_content>div {
+    height: 100%;
 }
 
 div.popover_badge {
@@ -58,8 +66,11 @@ div.popover_interaction {
 
 p.popover_description {
     display: -webkit-box;
-    height: 100%;
-    -webkit-line-clamp: 10;
+    height: calc(100% - 9em);
+    -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+}
+
+.popover_video_trailer {
+    height: 100%;
 }
