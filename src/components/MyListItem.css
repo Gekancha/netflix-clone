@@ -2,7 +2,7 @@ div.my_list_item {
     display: flex;
     height: 252px;
     width: 100%;
-    border: 1px solid white; 
+    border: 1px solid white;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -18,11 +18,22 @@ div.my_list_content {
 div.my_list_header {
     display: flex;
     justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 8px;
 }
 
-p.my_list_description {    
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+div.my_list_badge {
+    margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    div.my_list_header {
+        flex-direction: column;
+    }
+
+    div.my_list_item{
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
 }

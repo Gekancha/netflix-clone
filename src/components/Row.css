@@ -43,3 +43,13 @@ div.movie_poster {
     flex-direction: column;
     gap: 12px;
 }
+
+@media only screen and (max-width: 600px) {
+    .row {
+        margin-left: 12px;
+    }
+    .row_posters {
+        padding: 20px 8px;
+    }
+    
+}
