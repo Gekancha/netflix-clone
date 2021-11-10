@@ -78,6 +78,8 @@ p.popover_description {
     div.popover_content {
         flex-direction: column;
         overflow-y: scroll;
+        padding: 48px 24px 12px 24px;
+        width: 95%;
     }
 
     div.popover_left_content {
