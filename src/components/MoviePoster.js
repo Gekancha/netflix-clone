@@ -12,7 +12,7 @@ function MoviePoster({ movie, isLargeRow, displayLoading }) {
     const { setMovie } = useMovieContext()
 
     return (
-        <>
+        <div className="movie_poster">
             {displayLoading && isLoading ? (
                 <div style={{ paddingRight: '10px' }}>
                     <Skeleton.Button style={posterRatio} active />
@@ -36,9 +36,10 @@ function MoviePoster({ movie, isLargeRow, displayLoading }) {
                     setLoading(false)
                     setError(true)
                 }}
-                alt={movie.title}
+                alt={movie.title ?? movie.name ?? movie.original_name}
             />
-        </>
+            <p>{movie.title ?? movie.name ?? movie.original_name}</p>
+        </div>
     )
 }
 export default MoviePoster
