@@ -61,33 +61,37 @@ function MyListItem({ movie }) {
                     />
                     <div className="my_list_content">
                         <div className="my_list_header">
-                            <h2>{name}</h2>
+                            <div>
+                                <h2>{name}</h2>
+
+                                <div className="popover_badge my_list_badge">
+                                    {genres.map((genre) => (
+                                        <Badge count={genre} key={genre} />
+                                    ))}
+                                </div>
+                                <div className="popover_status_group my_list_status">
+                                    <Popover content="Rating">
+                                        <div className="popover_status">
+                                            <StarFilled />
+                                            {movie.vote_average}
+                                        </div>
+                                    </Popover>
+                                    <Popover content="Vote count">
+                                        <div className="popover_status">
+                                            <SmileFilled />
+                                            {movie.vote_count}
+                                        </div>
+                                    </Popover>
+                                </div>
+                            </div>
                             <Button
                                 icon={<DeleteFilled />}
                                 size="small"
                                 onClick={handleRemove}
+                                style={{ width: 'max-content' }}
                             >
                                 Remove from my list
                             </Button>
-                        </div>
-                        <div className="popover_badge">
-                            {genres.map((genre) => (
-                                <Badge count={genre} key={genre} />
-                            ))}
-                            <div className="popover_status_group">
-                                <Popover content="Rating">
-                                    <div className="popover_status">
-                                        <StarFilled />
-                                        {movie.vote_average}
-                                    </div>
-                                </Popover>
-                                <Popover content="Vote count">
-                                    <div className="popover_status">
-                                        <SmileFilled />
-                                        {movie.vote_count}
-                                    </div>
-                                </Popover>
-                            </div>
                         </div>
                         <p className="my_list_description">{movie.overview}</p>
                     </div>

@@ -47,11 +47,18 @@ function MoviePopover() {
                     <div className="popover_content">
                         <div className="popover_left_content">
                             <div className="popover_header">
-                                <h1>
-                                    {movie.title ??
-                                        movie.name ??
-                                        movie.original_name}
-                                </h1>
+                                <div>
+                                    <h1>
+                                        {movie.title ??
+                                            movie.name ??
+                                            movie.original_name}
+                                    </h1>
+                                    <div className="popover_badge">
+                                        {genres.map((genre) => (
+                                            <Badge count={genre} key={genre} />
+                                        ))}
+                                    </div>
+                                </div>
                                 <div className="popover_interaction">
                                     <div className="popover_status_group">
                                         <Popover content="Rating">
@@ -92,11 +99,6 @@ function MoviePopover() {
                                     )}
                                 </div>
                             </div>
-                            <div className="popover_badge">
-                                {genres.map((genre) => (
-                                    <Badge count={genre} key={genre} />
-                                ))}
-                            </div>
                             <p className="popover_description">
                                 {movie.overview}
                             </p>
@@ -114,7 +116,7 @@ function MoviePopover() {
                                 position: 'absolute',
                                 color: 'white',
                                 right: '2em',
-                                top: '0.75em'
+                                top: '0.75em',
                             }}
                             onClick={() => {
                                 setMovie()
